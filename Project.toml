@@ -1,0 +1,11 @@
+name = "AircrentreApp"
+uuid = "824d6782-a2ef-11e9-6666-e5662e0c26f8"
+authors = ["SimonDanisch <sdanisch@gmail.com>"]
+version = "4.0.3"
+
+[deps]
+Bonito = "824d6782-a2ef-11e9-3a09-e5662e0c26f8"
+Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+PrecompileTools = "aea7be01-6a6a-4083-8856-8a6e6704d82a"
+WGLMakie = "276b4fcb-3e11-5398-bf8b-a0c2d153d008"
+NDViewer = "e1a03473-7fd2-4259-81e1-ed5183eae3a5"
