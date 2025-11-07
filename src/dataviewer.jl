@@ -2,7 +2,7 @@ using Bonito, WGLMakie, NDViewer
 
 function viewer(file)
     yaml_str = read(file, String)
-    viewer = NDViewer.load_from_yaml(yaml_str)
+    viewer = NDViewer.load_from_yaml(file, yaml_str)
     WGLMakie.activate!(resize_to=:parent)
     logo = Bonito.Asset(joinpath(@__DIR__,  "aircentre.png"))
     app_dom = DOM.div(

@@ -10,9 +10,8 @@ using Downloads
 include("dataviewer.jl")
 
 function run(port=8081, blocking=true; file=joinpath(@__DIR__, "..", "examples", "default.yaml"))
-    Bonito.force_connection!(Bonito.DualWebsocket)
     server = Server("0.0.0.0", port)
-    viewer_app1 = create_app_from_yaml(file);
+    viewer_app1 = create_app_from_yaml(file)
     route!(server, "/" => viewer_app1);
     if blocking
         wait(server)
@@ -23,7 +22,6 @@ end
 let
     @setup_workload begin
         @compile_workload begin
-            WGLMakie.DISABLE_JS_FINALZING[] = true
             file=joinpath(@__DIR__, "..", "examples", "precompile.yaml")
             server = run(8888, false; file=file)
             getit(x) = begin
@@ -42,8 +40,6 @@ let
                 empty!(f.scene)
             end
             Makie.CURRENT_FIGURE[] = nothing
-            Bonito.Observables.clear(WGLMakie.TEXTURE_ATLAS)
-            WGLMakie.TEXTURE_ATLAS[] = Float32[]
             for (task, (task, close_ref)) in Bonito.SERVER_CLEANUP_TASKS
                 close_ref[] = false
             end
